@@ -5,9 +5,25 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width:100% !important;
+    max-height:100% !important;
+    display:block;
+}
+
+.clearfix:after {
+    content: " ";
+    /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     line-height: 1.25;
+    font-size: 0.85em;
 }
 
 table {
@@ -26,7 +42,6 @@ table caption {
 }
 
 th {
-    font-size: .85em;
     letter-spacing: .1em;
     font-weight: bold;
 }
@@ -35,41 +50,42 @@ th,
 td {
     padding: .625em;
     text-align: left;
+    vertical-align: middle;
 }
 
 td:nth-child(1),
 th:nth-child(1) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(2),
 th:nth-child(2) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(3),
 th:nth-child(3) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(4),
 th:nth-child(4) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(5),
 th:nth-child(5) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(6),
 th:nth-child(6) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(7),
 th:nth-child(7) {
-    min-width: 125px;
+    width: 125px;
 }
 
 td:nth-child(8),
@@ -100,6 +116,10 @@ tr:nth-child(even) {
 }
 
 @media screen and (max-width: 600px) {
+    body {
+        font-size: 1.25em;
+    }
+    
     table {
         border: 0;
         width: 100%
@@ -135,6 +155,7 @@ tr:nth-child(even) {
         display: block;
         font-size: .8em;
         text-align: right;
+        clear: both;
     }
 
     table td::before {
@@ -148,8 +169,31 @@ tr:nth-child(even) {
         border-bottom: 0;
     }
 
+    td:nth-child(1),
+    th:nth-child(1),
+    td:nth-child(2),
+    th:nth-child(2),
+    td:nth-child(3),
+    th:nth-child(3),
+    td:nth-child(4),
+    th:nth-child(4),
+    td:nth-child(5),
+    th:nth-child(5),
+    td:nth-child(6),
+    th:nth-child(6),
+    td:nth-child(7),
+    th:nth-child(7){
+        width: initial;
+        min-width: 125px;
+    }
+
     td:nth-child(8),
     th:nth-child(8) {
         width: initial;
+    }
+
+    img {
+        width: 175px;
+        float: right;
     }
 }
