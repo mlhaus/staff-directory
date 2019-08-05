@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+js/node_modules
+js/client_secret.json
+js/package-lock.json
+js/get-data.js
+images/
