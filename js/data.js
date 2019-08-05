@@ -15,6 +15,16 @@ function Person(person) {
     Person.all.push(this);
 }
 Person.all = [];
+Person.renderAll = function () {
+    var tbody = document.querySelector('tbody');
+    tbody.innerHTML = '';
+    Person.all.forEach(function(person) {
+        person.render();
+    });
+}
+Person.prototype.render = function() {
+    
+}
 
 var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
@@ -30,6 +40,7 @@ function displayContents() {
         data.forEach(function (item) {
             new Person(item);
         });
+        Person.renderAll();
     }
 }
 
