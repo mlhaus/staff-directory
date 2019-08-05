@@ -19,15 +19,15 @@ Person.all = [];
 var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
 function loadFile() {
-    reader.open('get', 'js/staff_data.txt', true); 
+    reader.open('get', 'js/staff_data.txt', true);
     reader.onreadystatechange = displayContents;
     reader.send(null);
 }
 
 function displayContents() {
-    if(reader.readyState==4) {
+    if (reader.readyState == 4) {
         var data = JSON.parse(reader.responseText);
-        data.forEach(function(item) {
+        data.forEach(function (item) {
             new Person(item);
         });
     }
