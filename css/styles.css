@@ -27,7 +27,6 @@ body {
 }
 
 table {
-    width: 1125px;
     table-layout: fixed;
     border-collapse: collapse;
     border: 1px solid #ccc;
@@ -51,6 +50,8 @@ td {
     padding: .625em;
     text-align: left;
     vertical-align: middle;
+    word-break:break-word;
+    /* border-right: 1px solid red; */
 }
 
 td:nth-child(1),
@@ -65,12 +66,12 @@ th:nth-child(2) {
 
 td:nth-child(3),
 th:nth-child(3) {
-    width: 250px;
+    width: 225px;
 }
 
 td:nth-child(4),
 th:nth-child(4) {
-    width: 125px;
+    width: 200px;
 }
 
 td:nth-child(5),
@@ -96,7 +97,6 @@ thead {
 tr {
     display: block;
     position: relative;
-    padding: .35em;
 }
 
 tbody {

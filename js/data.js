@@ -101,8 +101,16 @@ Person.prototype.render = function() {
             br = document.createElement('br');
             td.appendChild(br);
         }
-        
     }
+    tr.appendChild(td);
+
+    // Display email address
+    var td = document.createElement('td');
+    td.setAttribute('data-label', 'Email');
+    var a = document.createElement('a');
+    a.setAttribute('href', `mailto:${this.email}`);
+    a.textContent = `${this.email}`;
+    td.appendChild(a);
     tr.appendChild(td);
 
     // <tr>
