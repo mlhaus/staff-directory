@@ -5,8 +5,8 @@ function Person(person) {
     this.phoneExts = person.phonenumber.split(',');
     this.email = person.emailaddress;
     this.buildings = person.building.split(',');
-    this.jobCategory = person.jobcategory;
-    this.responsibilities = person.responsibilities;
+    this.categories = person.jobcategory.split(',');
+    this.responsibilities = person.responsibilities.split(',');
     this.order = person.order;
     this.picture = person.picture;
     this.websiteLabel = person.website;
@@ -111,6 +111,23 @@ Person.prototype.render = function() {
     a.setAttribute('href', `mailto:${this.email}`);
     a.textContent = `${this.email}`;
     td.appendChild(a);
+    tr.appendChild(td);
+
+    // Display Job Category
+    td = document.createElement('td');
+    td.setAttribute('data-label', 'Job Categories');
+    var span = document.createElement('span');
+    var result = '';
+    for (i in this.categories) {
+        var category = this.categories[i].trim();
+        result += `${category}`;
+        // i is type string, while this.buiding.length is type number
+        if (i != this.categories.length - 1) {
+            result += ', ';
+        }
+    }
+    span.textContent = result;
+    td.appendChild(span);
     tr.appendChild(td);
 
     // <tr>
