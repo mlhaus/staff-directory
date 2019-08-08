@@ -2,9 +2,9 @@ function Person(person) {
     this.firstName = person.firstname;
     this.lastName = person.lastname;
     this.active = person.activeemployee;
-    this.phone = person.phonenumber;
+    this.phoneExts = person.phonenumber.split(',');
     this.email = person.emailaddress;
-    this.building = person.building;
+    this.buildings = person.building.split(',');
     this.jobCategory = person.jobcategory;
     this.responsibilities = person.responsibilities;
     this.order = person.order;
@@ -43,42 +43,66 @@ Person.prototype.render = function() {
     td.textContent = `${this.firstName} ${this.lastName}`;
     tr.appendChild(td);
 
-    // Display Phone
+    // Display Building and Phone
     td = document.createElement('td');
-    td.setAttribute('data-label', 'Phone');
+    td.setAttribute('data-label', 'Building and Phone');
     var phoneNumber;
-    var school = this.building;
-    switch (school) {
-        case 'Bus Barn':
-            phoneNumber = '(319) 627-4288';
-            break;
-        case 'Administrative Office':
-            phoneNumber = '(319) 627-2116';
-            break;
-        case 'Early Learning Center':
-            phoneNumber = '(319) 627-5089';
-            break;
-        case 'Elementary School':
-            phoneNumber = '(319) 627-4243';
-            break;
-        case 'Middle School':
-            phoneNumber = '(319) 627-2118';
-            break;
-        case 'High School':
-            phoneNumber = '(319) 627-2115';
-            break;
-        default:
-            phoneNumber = '';
+    for(i in this.buildings) {
+        var school = this.buildings[i].trim();
+        var span = document.createElement('span');
+        span.textContent = `${this.buildings[i]}`;
+        td.appendChild(span);
+        var br = document.createElement('br');
+        td.appendChild(br);
+        switch (school) {
+            case 'Bus Barn':
+                phoneNumber = '(319) 627-4288';
+                break;
+            case 'Administrative Office':
+            case 'Central Office':
+                phoneNumber = '(319) 627-2116';
+                break;
+            case 'Early Learning Center':
+            case 'ELC':
+                phoneNumber = '(319) 627-5089';
+                break;
+            case 'Elementary School':
+            case 'Elementary':
+                phoneNumber = '(319) 627-4243';
+                break;
+            case 'Middle School':
+                phoneNumber = '(319) 627-2118';
+                break;
+            case 'High School':
+                phoneNumber = '(319) 627-2115';
+                break;
+            default:
+                phoneNumber = '';
+        }
+        var a = document.createElement('a');
+        a.setAttribute('href', `tel:${phoneNumber}`);
+        a.textContent = phoneNumber;
+        td.appendChild(a);
+        br = document.createElement('br');
+        td.appendChild(br);
+
+        if (this.phoneExts[i]) {
+            var phoneExt = this.phoneExts[i].trim();
+            if (phoneExt) {
+                var span = document.createElement('span');
+                span.textContent = `Ext: ${phoneExt}`;
+                td.appendChild(span);
+            }
+        }
+        // i is type string, while this.buiding.length is type number
+        if (i != this.buildings.length - 1) {
+            br = document.createElement('br');
+            td.appendChild(br);
+            br = document.createElement('br');
+            td.appendChild(br);
+        }
+        
     }
-    var a = document.createElement('a');
-    a.setAttribute('href', `tel:${phoneNumber}`);
-    a.textContent = phoneNumber;
-    td.appendChild(a);
-    var span = document.createElement('span');
-    var br = document.createElement('br');
-    td.appendChild(br);
-    span.textContent = this.phone ? `Ext: ${this.phone}` : '';
-    td.appendChild(span);
     tr.appendChild(td);
 
     // <tr>
