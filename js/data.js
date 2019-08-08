@@ -45,7 +45,7 @@ Person.prototype.render = function() {
 
     // Display Building and Phone
     td = document.createElement('td');
-    td.setAttribute('data-label', 'Building and Phone');
+    td.setAttribute('data-label', 'Building(s) and Phone(s)');
     var phoneNumber;
     for(i in this.buildings) {
         var school = this.buildings[i].trim();
@@ -83,16 +83,16 @@ Person.prototype.render = function() {
         a.setAttribute('href', `tel:${phoneNumber}`);
         a.textContent = phoneNumber;
         td.appendChild(a);
-        br = document.createElement('br');
-        td.appendChild(br);
 
         if (this.phoneExts[i]) {
             var phoneExt = this.phoneExts[i].trim();
             if (phoneExt) {
                 var span = document.createElement('span');
-                span.textContent = `Ext: ${phoneExt}`;
+                span.textContent = ` Ext: ${phoneExt}`;
                 td.appendChild(span);
             }
+            // br = document.createElement('br');
+            // td.appendChild(br);
         }
         // i is type string, while this.buiding.length is type number
         if (i != this.buildings.length - 1) {

@@ -65,7 +65,7 @@ th:nth-child(2) {
 
 td:nth-child(3),
 th:nth-child(3) {
-    width: 125px;
+    width: 250px;
 }
 
 td:nth-child(4),
@@ -85,11 +85,6 @@ th:nth-child(6) {
 
 td:nth-child(7),
 th:nth-child(7) {
-    width: 125px;
-}
-
-td:nth-child(8),
-th:nth-child(8) {
     width: 250px;
 }
 
@@ -119,7 +114,7 @@ tr:nth-child(even) {
     body {
         font-size: 1.25em;
     }
-    
+
     table {
         border: 0;
         width: 100%
