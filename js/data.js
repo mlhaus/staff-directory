@@ -147,16 +147,17 @@ Person.prototype.render = function() {
     td.appendChild(span);
     tr.appendChild(td);
 
-    // <tr>
-    //     <td data-label="Picture">Picture</td>
-    //     <td data-label="Name">Name</td>
-    //     <td data-label="Phone">Phone</td>
-    //     <td data-label="Email">Email</td>
-    //     <td data-label="Building">Building</td>
-    //     <td data-label="Job Category">Job Category</td>
-    //     <td data-label="Responsibilities">Responsibilities</td>
-    //     <td data-label="Website">Website</td>
-    // </tr>
+    // Display Website link
+    var td = document.createElement('td');
+    td.setAttribute('data-label', 'Website');
+    if(this.link && this.websiteLabel) {
+        var a = document.createElement('a');
+        a.setAttribute('href', `${this.link}`);
+        a.setAttribute('target', '_blank');
+        a.textContent = `${this.websiteLabel}`;
+        td.appendChild(a);
+        tr.appendChild(td);
+    }
 }
 
 var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
