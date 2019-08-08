@@ -113,7 +113,7 @@ Person.prototype.render = function() {
     td.appendChild(a);
     tr.appendChild(td);
 
-    // Display Job Category
+    // Display Job Categories
     td = document.createElement('td');
     td.setAttribute('data-label', 'Job Categories');
     var span = document.createElement('span');
@@ -123,6 +123,23 @@ Person.prototype.render = function() {
         result += `${category}`;
         // i is type string, while this.buiding.length is type number
         if (i != this.categories.length - 1) {
+            result += ', ';
+        }
+    }
+    span.textContent = result;
+    td.appendChild(span);
+    tr.appendChild(td);
+
+    // Display Job Responsibilities
+    td = document.createElement('td');
+    td.setAttribute('data-label', 'Responsibilities');
+    var span = document.createElement('span');
+    var result = '';
+    for (i in this.responsibilities) {
+        var responsibility = this.responsibilities[i].trim();
+        result += `${responsibility}`;
+        // i is type string, while this.buiding.length is type number
+        if (i != this.responsibilities.length - 1) {
             result += ', ';
         }
     }
